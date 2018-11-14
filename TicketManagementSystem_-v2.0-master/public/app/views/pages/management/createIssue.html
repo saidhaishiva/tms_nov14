@@ -1,0 +1,75 @@
+<div class="page-header">
+    <h1>Add an Issue</h1> 
+</div>
+
+<form name="issueForm" ng-submit="issue.createIssue(issueData);" novalidate>
+    <div class="col-lg-12 nextLine">
+    <div class="col-lg-3">
+        <label>Issue ID:</label>
+        <input type="number" class="form-control" name="mantisIssueID"  ng-maxlength="9" placeholder="Please Enter Mantis Issue ID" ng-model="issue.issueData.mantisIssueID" required></input>
+    </div>
+    <div class="col-lg-3">
+        <label>Mantis Status:</label>
+        <input type="text" class="form-control" name="mantisStatus"   placeholder="Please Enter Mantis Status" ng-model="issue.issueData.mantisStatus" required></input>
+    </div>
+    <div class="col-lg-3">
+    <label>Mantis Category:</label>
+    <select  class="form-control" name="mantisCategory" ng-model="issue.issueData.mantisCategory" placeholder="Please select an Option" required>
+        <option ng-selected="issue.preSelected" ng-repeat="Category in issue.Categories">{{Category}}</option>
+    </select>
+    </div>
+
+    <div class="col-lg-3">
+        <label>Mantis Priority:</label>
+        <input type="text" class="form-control" name="mantisPriority"   placeholder="Please Enter Mantis Priority" ng-model="issue.issueData.mantisPriority" required></input>
+    </div>
+    </div>
+    
+    <div class="col-lg-12 nextLine">
+    <div class="col-lg-3">
+        <label>Internal Status:</label>
+        <input type="text" class="form-control" name="internalStatus"  placeholder="Please Enter Internal Status" ng-model="issue.issueData.internalStatus" required></input>
+    </div>
+    <div class="col-lg-3">
+        <label>Internal Category:</label>
+        <input type="text" class="form-control" name="internalCategory"   placeholder="Please Enter Internal Category" ng-model="issue.issueData.internalCategory" required></input>
+    </div>
+    <div class="col-lg-3">
+        <label>Internal Priority:</label>
+        <input type="text" class="form-control" name="internalPriority"  placeholder="Please Enter Internal Priority" ng-model="issue.issueData.internalPriority" required></input>
+    </div>
+    <div class="col-lg-3">
+        <label>Module:</label>
+        <input type="text" class="form-control" name="module"   placeholder="Please Enter module"  ng-model="issue.issueData.module" required></input>
+    </div>  
+</br>
+</br>
+    </div>
+
+    <div class="col-lg-12 nextLine">
+    <div class="col-lg-3">
+        <label>Assing to:</label>
+        <input type="text" class="form-control" name="assingedTo"  placeholder="Please Enter Internal Status" ng-model="issue.issueData.assingedTo" required></input>
+    </div>
+    <div class="col-lg-3">
+        </br>
+        <button type="submit" class="btn btn-primary" >Create</button>
+    </div>
+    </div>
+</form>
+
+</br>
+<div class="jumbotron text-center" ng-show="issue.loading">
+    <span class="glyphicon glyphicon-repeat spinner"></span>
+    <pLoading...></p>
+</div>
+</br>
+
+<div class="row show-hide-message"  ng-show="issue.successMsg" >
+    <div class="alert alert-success">{{ issue.successMsg }}</div>
+</div>
+
+<div class="row show-hide-message"  ng-show="issue.errorMsg" >
+        <div class="alert alert-danger">{{issue.field}}+"-"+{{ issue.errorMsg }}</div>
+</div>
+
